@@ -14,6 +14,20 @@ public class Pad : MonoBehaviour
         transform.position = mousePositionInUnits;
         transform.position = currentPosition;
     }
+    
+
+    #endregion
+
+
+    
+
+
+    #region Public methods
+
+    public static void MoveToStartPosition()
+    {
+        
+    }
 
     #endregion
 }

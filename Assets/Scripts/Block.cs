@@ -1,12 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Block : MonoBehaviour
 {
     #region Variables
 
-    [SerializeField] public int _hp;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private int _blockScore;
+    [SerializeField] private int _hp;
     [Header("Sprites")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
     public Sprite[] _sprites;
 
     #endregion
@@ -18,7 +20,7 @@ public class Block : MonoBehaviour
     {
         _hp--;
         SetSprite();
-        if (_hp < 0)
+        if (_hp<=0)
         {
             Destroy(gameObject);
         }
