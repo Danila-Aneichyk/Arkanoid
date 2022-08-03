@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Block : MonoBehaviour
 {
@@ -8,7 +7,8 @@ public class Block : MonoBehaviour
     [SerializeField] private int _blockScore;
     [SerializeField] private int _hp;
     [Header("Sprites")]
-    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField]
+    protected SpriteRenderer _spriteRenderer;
     public Sprite[] _sprites;
 
     #endregion
@@ -18,13 +18,7 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        _hp--;
-        SetSprite();
-        if (_hp<=0)
-        {
-            Destroy(gameObject);
-            ScoreManager.Instance.ChangeScore(_blockScore); 
-        }
+        BlockDestroy();
     }
 
     #endregion
@@ -40,6 +34,17 @@ public class Block : MonoBehaviour
     private void SetSprite()
     {
         _spriteRenderer.sprite = _sprites[0];
+    }
+
+    protected virtual void BlockDestroy()
+    {
+        _hp--;
+        SetSprite();
+        if (_hp <= 0)
+        {
+            Destroy(gameObject);
+            ScoreManager.Instance.ChangeScore(_blockScore);
+        }
     }
 
     #endregion
