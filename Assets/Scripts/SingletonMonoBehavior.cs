@@ -1,34 +1,34 @@
-﻿//using UnityEngine;
+﻿using UnityEngine;
 
-//public class SingletonMonoBehavior<T> : MonoBehaviour
-//{
- //   #region Variables
-//
- //   private static T _instance;
+public class SingletonMonoBehavior<T> : MonoBehaviour
+{
+    #region Variables
 
- //   #endregion
+    private static T _instance;
 
-
-   // #region Properties
-
-   // public static T Instance => _instance;
-
-   // #endregion
+    #endregion
 
 
-   // #region Unity lifecycle
+    #region Properties
 
-   // protected virtual void Awake()
-  //  {
-     //   if (_instance != null)
-    //    {
-    //        Destroy(gameObject);
-   //         return;
-     //   }
+    public static T Instance => _instance;
 
-      //  _instance = gameObject.GetComponent<T>();
-      //  DontDestroyOnLoad(gameObject);
-  //  }
+    #endregion
 
-  //  #endregion
-//}
+
+    #region Unity lifecycle
+
+    protected virtual void Awake()
+    {
+        if (_instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        _instance = gameObject.GetComponent<T>();
+        DontDestroyOnLoad(gameObject);
+    }
+
+    #endregion
+}

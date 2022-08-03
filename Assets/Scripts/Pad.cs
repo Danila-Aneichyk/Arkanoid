@@ -24,10 +24,7 @@ public class Pad : MonoBehaviour
 
     #region Public methods
 
-    public static void MoveToStartPosition()
-    {
-        
-    }
+   
 
     #endregion
 }

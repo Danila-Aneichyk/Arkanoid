@@ -5,14 +5,12 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     #region Variables
-
-    [SerializeField] public Pad Pad; 
+    
     [SerializeField] private int _healthPoints;
     [SerializeField] public int NumOfHearts;
     [SerializeField] public Image[] hearts;
     [SerializeField] public Sprite FullHeart;
     [SerializeField] public Sprite EmptyHeart;
-
     #endregion
 
 

@@ -1,26 +1,18 @@
-﻿//using System;
+﻿public class ScoreManager : SingletonMonoBehavior<ScoreManager>
+{
+    #region Properties
 
-//public class ScoreManager : SingletonMonoBehavior<ScoreManager>
-//{
-   // #region Properties
+    public int Score { get; private set; }
 
-  //  public int Score { get; private set; }
-
-   // #endregion
-  //  #region Events
-    
-  //  public event Action<int> OnScoreChanged;
-//
-   // #endregion
+    #endregion
 
 
-  //  #region Pubic methods
+    #region Pubic methods
 
-   // public void CountScore(int score)
-   // {
-    //    Score += score;
-    //    OnScoreChanged?.Invoke(Score);
-   // }
+    public void ChangeScore(int score)
+    {
+        Score += score;
+    }
 
-   // #endregion
-//}
+    #endregion
+}

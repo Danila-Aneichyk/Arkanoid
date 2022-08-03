@@ -23,6 +23,7 @@ public class Block : MonoBehaviour
         if (_hp<=0)
         {
             Destroy(gameObject);
+            ScoreManager.Instance.ChangeScore(_blockScore); 
         }
     }
 
