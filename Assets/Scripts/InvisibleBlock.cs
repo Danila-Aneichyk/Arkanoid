@@ -24,7 +24,7 @@ public class InvisibleBlock : Block
     protected override void BlockDestroy()
     {
         SetInvisibility(1f);
-        
+
         if (_isVisible)
             base.BlockDestroy();
 

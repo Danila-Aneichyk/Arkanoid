@@ -1,11 +1,18 @@
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehavior<GameManager>
 {
+    
     #region Variables
 
-    private bool _isStarted;
     [SerializeField] private Ball _ball;
+
+    #endregion
+
+
+    #region Properties
+
+    public bool IsStarted { get; set; }
 
     #endregion
 
@@ -14,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (_isStarted)
+        if (IsStarted)
         {
             return;
         }
@@ -23,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            StartBall();
+            _startBall();
         }
     }
 
@@ -32,10 +39,10 @@ public class GameManager : MonoBehaviour
 
     #region Private methods
 
-    private void StartBall()
+    private void _startBall()
     {
         Debug.Log("Start Ball");
-        _isStarted = true;
+        IsStarted = true;
         _ball.StartMove();
     }
 

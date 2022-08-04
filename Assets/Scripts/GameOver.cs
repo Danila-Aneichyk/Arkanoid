@@ -5,21 +5,12 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     #region Variables
-    
+
     [SerializeField] private int _healthPoints;
     [SerializeField] public int NumOfHearts;
     [SerializeField] public Image[] hearts;
     [SerializeField] public Sprite FullHeart;
     [SerializeField] public Sprite EmptyHeart;
-    #endregion
-
-
-    #region Public Methods
-
-    public void CountHp()
-    {
-        _healthPoints--;
-    }
 
     #endregion
 
@@ -40,30 +31,26 @@ public class GameOver : MonoBehaviour
 
         for (int i = 0; i < hearts.Length; i++)
         {
-            if (i < Mathf.RoundToInt(_healthPoints))
-            {
-                hearts[i].sprite = FullHeart;
-            }
-            else
-            {
-                hearts[i].sprite = EmptyHeart;
-            }
+            hearts[i].sprite = i < Mathf.RoundToInt(_healthPoints) ? FullHeart : EmptyHeart;
 
-            if (i < NumOfHearts)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
+            hearts[i].enabled = i < NumOfHearts;
 
-            if (_healthPoints <= 0)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            }
+            if (_healthPoints > 0)
+                continue;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //GameManager.Instance.IsStarted = true; 
         }
     }
+
+
+    #region Private Methods
+
+    private void CountHp()
+    {
+        _healthPoints--;
+    }
+
+    #endregion
 
     #endregion
 }
