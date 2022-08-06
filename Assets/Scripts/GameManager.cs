@@ -2,22 +2,28 @@ using UnityEngine;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
 {
-    
     #region Variables
 
     [SerializeField] private Ball _ball;
+    [SerializeField] private int _maxHp;
 
     #endregion
 
 
     #region Properties
 
-    public bool IsStarted { get; set; }
+    private bool IsStarted { get; set; }
+    public int CurrentHp { get; private set; }
 
     #endregion
 
 
     #region Unity lifecycle
+
+    public void Start()
+    {
+        CurrentHp = _maxHp;
+    }
 
     void Update()
     {
@@ -30,7 +36,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
         if (Input.GetMouseButtonDown(0))
         {
-            _startBall();
+            StartBall();
         }
     }
 
@@ -39,7 +45,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     #region Private methods
 
-    private void _startBall()
+    private void StartBall()
     {
         Debug.Log("Start Ball");
         IsStarted = true;
@@ -47,4 +53,19 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     }
 
     #endregion
+
+
+    public void DecrementHp()
+    {
+        CurrentHp--;
+
+        if (CurrentHp == 0)
+        {
+            //TODO: GameOver
+        }
+        else
+        {
+            IsStarted = false;
+        }
+    }
 }
