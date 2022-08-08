@@ -23,10 +23,7 @@ public class HUD : MonoBehaviour
     private void Update()
     {
         SetScoreLabel();
-    }
 
-    private void FixedUpdate()
-    {
         int healthPoints = GameManager.Instance.CurrentHp;
         if (healthPoints > NumOfHearts)
         {

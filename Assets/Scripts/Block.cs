@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Block : MonoBehaviour
 {
@@ -14,12 +15,32 @@ public class Block : MonoBehaviour
     #endregion
 
 
+    #region Events
+
+    public static event Action<Block> OnCreated;  
+
+    public static event Action<Block> OnDestroyed;
+    
+    #endregion
+
+
     #region Unity lifecycle
+
+    private void Start()
+    {
+        OnCreated?.Invoke(this);
+    }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
         BlockDestroy();
     }
+
+    private void OnDestroy()
+    {   
+        OnDestroyed?.Invoke(this);
+    }
+    
 
     #endregion
 
@@ -46,6 +67,7 @@ public class Block : MonoBehaviour
             ScoreManager.Instance.ChangeScore(_blockScore);
         }
     }
+    
 
     #endregion
 }

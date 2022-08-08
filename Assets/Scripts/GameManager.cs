@@ -20,12 +20,23 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     #region Unity lifecycle
 
-    public void Start()
+    protected override void Awake()
     {
+        base.Awake();
         CurrentHp = _maxHp;
     }
 
-    void Update()
+    public void Start()
+    {
+        LevelManager.Instance.OnAllBlocksDestroyed += PerformWin;
+    }
+
+    private void OnDestroy()
+    {
+        LevelManager.Instance.OnAllBlocksDestroyed -= PerformWin;
+    }
+
+    private void Update()
     {
         if (IsStarted)
         {
@@ -38,6 +49,16 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         {
             StartBall();
         }
+    }
+
+    #endregion
+
+
+    #region Public methods
+
+    public void PerformWin()
+    {
+        Debug.Log("WIN!!!");
     }
 
     #endregion
