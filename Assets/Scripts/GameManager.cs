@@ -11,6 +11,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
 
     #region Properties
+
     public int CurrentHp { get; private set; }
 
     #endregion
@@ -19,6 +20,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
     #region Events
 
     public event Action OnGameOver;
+
     public event Action OnGameWon;
 
     #endregion

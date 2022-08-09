@@ -20,10 +20,15 @@ public class HUD : MonoBehaviour
 
     #region Unity lifecycle
 
+    private void Start()
+    {
+        ScoreManager.Instance.OnScoreChange += ScoreChanged;
+
+        ScoreChanged(ScoreManager.Instance.Score);
+    }
+
     private void Update()
     {
-        SetScoreLabel();
-
         int healthPoints = GameManager.Instance.CurrentHp;
         if (healthPoints > NumOfHearts)
         {
@@ -42,14 +47,19 @@ public class HUD : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        ScoreManager.Instance.OnScoreChange -= ScoreChanged;
+    }
+
     #endregion
 
 
     #region Private methods
 
-    private void SetScoreLabel()
+    private void ScoreChanged(int score)
     {
-        _scoreLabel.text = $"Score - {ScoreManager.Instance.Score}";
+        _scoreLabel.text = $"Score: {ScoreManager.Instance.Score}";
     }
 
     #endregion
