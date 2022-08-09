@@ -6,6 +6,7 @@ public class BottomWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
+        
         DecrementHp();
     }
 

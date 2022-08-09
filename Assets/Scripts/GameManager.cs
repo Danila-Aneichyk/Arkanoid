@@ -5,15 +5,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 {
     #region Variables
 
-    [SerializeField] private Ball _ball;
     [SerializeField] private int _maxHp;
 
     #endregion
 
 
     #region Properties
-
-    private bool IsStarted { get; set; }
     public int CurrentHp { get; private set; }
 
     #endregion
@@ -45,30 +42,20 @@ public class GameManager : SingletonMonoBehavior<GameManager>
         LevelManager.Instance.OnAllBlocksDestroyed -= PerformWin;
     }
 
-    private void Update()
-    {
-        if (IsStarted)
-        {
-            return;
-        }
-
-        _ball.MoveWithPad();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            StartBall();
-        }
-    }
-
     #endregion
 
 
     #region Public methods
 
-    public void PerformWin()
+    public void DecrementHp()
     {
-        OnGameWon?.Invoke();
-        Debug.Log("WIN!!!");
+        CurrentHp--;
+        FindObjectOfType<Ball>().ToDefaultState();
+
+        if (CurrentHp == 0)
+        {
+            OnGameOver?.Invoke();
+        }
     }
 
     #endregion
@@ -76,28 +63,11 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     #region Private methods
 
-    private void StartBall()
+    private void PerformWin()
     {
-        Debug.Log("Start Ball");
-        IsStarted = true;
-        _ball.StartMove();
+        OnGameWon?.Invoke();
+        Debug.Log("WIN!!!");
     }
 
     #endregion
-
-
-    public void DecrementHp()
-    {
-        CurrentHp--;
-
-        if (CurrentHp == 0)
-        {
-            OnGameOver?.Invoke();
-        }
-        else
-        {
-            IsStarted = false;
-        }
-    }
-    
 }

@@ -7,11 +7,28 @@ public class Ball : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Vector2 _startDirection;
     [SerializeField] private Pad _pad;
+    private bool _isStarted;
+    private Vector3 _startPosition;
 
     #endregion
 
 
     #region Unity lifecycle
+
+    private void Update()
+    {
+        if (_isStarted)
+        {
+            return;
+        }
+
+        MoveWithPad();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartBall();
+        }
+    }
 
     public void OnDrawGizmos()
     {
@@ -32,8 +49,12 @@ public class Ball : MonoBehaviour
         _rb.velocity = _startDirection;
     }
 
-    #endregion
-
+    public void ToDefaultState()
+    {
+        _isStarted = false;
+        _rb.velocity = Vector2.zero;  
+        transform.position = _startPosition;
+    }
 
     public void MoveWithPad()
     {
@@ -42,4 +63,18 @@ public class Ball : MonoBehaviour
         currentPosition.x = padPosition.x;
         transform.position = currentPosition;
     }
+
+    #endregion
+
+
+    #region Private methods
+
+    private void StartBall()
+    {
+        Debug.Log("Start Ball");
+        _isStarted = true;
+        StartMove();
+    }
+
+    #endregion
 }

@@ -1,5 +1,6 @@
 ﻿public static class Tags
 {
-    public const string Respawn = "Respawn";
-   
+    public const string Ball = "Ball";
+    public const string PickUp = "PickUp";
+
 }
