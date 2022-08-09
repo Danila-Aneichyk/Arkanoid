@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GameOver : MonoBehaviour
+public class BottomWall : MonoBehaviour
 {
     #region Unity lifecycle
 

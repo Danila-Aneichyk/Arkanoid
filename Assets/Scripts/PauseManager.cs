@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -13,6 +14,13 @@ public class PauseManager : SingletonMonoBehavior<PauseManager>
     #region Properties
 
     public bool IsPaused { get; private set; }
+
+    #endregion
+
+
+    #region Events
+
+    public event Action<bool> OnPaused; 
 
     #endregion
 
@@ -34,8 +42,8 @@ public class PauseManager : SingletonMonoBehavior<PauseManager>
 
     private void TogglePause()
     {
+        OnPaused?.Invoke(IsPaused);
         IsPaused = !IsPaused;
-        PauseView.SetActive(IsPaused);
         Time.timeScale = IsPaused ? 0 : 1;
     }
 

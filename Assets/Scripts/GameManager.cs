@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : SingletonMonoBehavior<GameManager>
@@ -14,6 +15,14 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     private bool IsStarted { get; set; }
     public int CurrentHp { get; private set; }
+
+    #endregion
+
+
+    #region Events
+
+    public event Action OnGameOver;
+    public event Action OnGameWon;
 
     #endregion
 
@@ -58,6 +67,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     public void PerformWin()
     {
+        OnGameWon?.Invoke();
         Debug.Log("WIN!!!");
     }
 
@@ -82,11 +92,12 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
         if (CurrentHp == 0)
         {
-            //TODO: GameOver
+            OnGameOver?.Invoke();
         }
         else
         {
             IsStarted = false;
         }
     }
+    
 }
