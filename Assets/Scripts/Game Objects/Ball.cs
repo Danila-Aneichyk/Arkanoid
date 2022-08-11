@@ -7,6 +7,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private Vector2 _startDirection;
     [SerializeField] private Pad _pad;
+    [SerializeField] private float _minSpeed = 1;  
     private bool _isStarted;
     private Vector3 _startPosition;
 
@@ -62,6 +63,17 @@ public class Ball : MonoBehaviour
         Vector3 currentPosition = transform.position;
         currentPosition.x = padPosition.x;
         transform.position = currentPosition;
+    }
+
+    public void ChangeSpeed(float _speedMultiplier)
+    {
+        float velocityMagnitude = _rb.velocity.magnitude;
+        velocityMagnitude *= _speedMultiplier;
+
+        if (velocityMagnitude < _minSpeed)
+            velocityMagnitude = _minSpeed;
+
+        _rb.velocity = _rb.velocity.normalized * velocityMagnitude; 
     }
 
     #endregion

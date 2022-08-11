@@ -9,6 +9,7 @@ TagManager:
   - TriangleWoodBlock
   - CircleWoodBlock
   - Ball
+  - Pad
   layers:
   - Default
   - TransparentFX
@@ -16,11 +17,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ball
+  - Block
+  - PickUp
+  - BottomWall
+  - Pad
   - 
   - 
   - 
