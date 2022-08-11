@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5702754845514877631}
   - component: {fileID: 5702754845514877629}
   - component: {fileID: 8389387507902478610}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: WoodBlock
   m_TagString: SmallWoodBlock
   m_Icon: {fileID: 0}
@@ -129,3 +129,5 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 5702754845514877631}
   _sprites:
   - {fileID: 21300000, guid: 867a4fec287e04fc4a9b6b7b4d7b3f55, type: 3}
+  _pickUpPrefab: {fileID: 0}
+  _pickUpSpawnChance: 0

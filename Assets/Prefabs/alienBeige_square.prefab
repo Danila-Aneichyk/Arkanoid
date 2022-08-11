@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4953953501866581163}
   - component: {fileID: 1982059870060230509}
   - component: {fileID: -62165342702477080}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: alienBeige_square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _blockScore: 1
   _hp: 2
-  _spriteRenderer: {fileID: 4953953501866581163}
   _sprites:
   - {fileID: 21300000, guid: 147550860f98247c28471e2d948ef226, type: 3}
+  _pickUpPrefab: {fileID: 6756069097643262569, guid: c3dbe72964c354f4aa3bf068f8c0f08a, type: 3}
+  _pickUpSpawnChance: 0.6

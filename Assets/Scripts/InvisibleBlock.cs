@@ -11,8 +11,9 @@ public class InvisibleBlock : Block
 
     #region Unity lifecycle
 
-    private void Awake()
+    protected override void Start()
     {
+        base.Start(); 
         SetInvisibility(0f);
     }
 
@@ -40,7 +41,7 @@ public class InvisibleBlock : Block
     {
         Color color = _spriteRenderer.color;
         color.a = alpha;
-        _spriteRenderer.color = color;
+        _spriteRenderer.color = color; 
     }
 
     #endregion

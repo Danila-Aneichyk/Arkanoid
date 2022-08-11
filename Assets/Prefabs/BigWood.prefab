@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8777003711057977172}
   - component: {fileID: 8777003711057977175}
   - component: {fileID: 3316237587352677140}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BigWood
   m_TagString: BigWoodBlock
   m_Icon: {fileID: 0}
@@ -129,3 +129,5 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 8777003711057977172}
   _sprites:
   - {fileID: 21300000, guid: 25fff95bb29da4c8c9e46644cffe8d9b, type: 3}
+  _pickUpPrefab: {fileID: 0}
+  _pickUpSpawnChance: 0

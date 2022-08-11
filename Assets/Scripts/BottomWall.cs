@@ -6,8 +6,16 @@ public class BottomWall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        
-        DecrementHp();
+        if (col.gameObject.CompareTag(Tags.Ball))
+        {
+            DecrementHp();
+        }
+        else
+        {
+            Destroy(col.gameObject);
+        }
+
+            
     }
 
     #endregion
@@ -17,7 +25,7 @@ public class BottomWall : MonoBehaviour
 
     private void DecrementHp()
     {
-        GameManager.Instance.DecrementHp();
+        GameManager.Instance.LoseLife();
     }
 
     #endregion

@@ -49,7 +49,7 @@ public class GameManager : SingletonMonoBehavior<GameManager>
 
     #region Public methods
 
-    public void DecrementHp()
+    public void LoseLife()
     {
         CurrentHp--;
         FindObjectOfType<Ball>().ToDefaultState();

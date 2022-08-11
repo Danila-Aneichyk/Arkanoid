@@ -8,6 +8,7 @@ TagManager:
   - BigWoodBlock
   - TriangleWoodBlock
   - CircleWoodBlock
+  - Ball
   layers:
   - Default
   - TransparentFX
