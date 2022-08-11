@@ -16,6 +16,11 @@ public class Ball : MonoBehaviour
 
     #region Unity lifecycle
 
+    private void Awake()
+    {
+        _startPosition = transform.position; 
+    }
+
     private void Update()
     {
         if (_isStarted)
@@ -45,11 +50,6 @@ public class Ball : MonoBehaviour
 
     #region Public methods
 
-    public void StartMove()
-    {
-        _rb.velocity = _startDirection;
-    }
-
     public void ToDefaultState()
     {
         _isStarted = false;
@@ -57,18 +57,10 @@ public class Ball : MonoBehaviour
         transform.position = _startPosition;
     }
 
-    public void MoveWithPad()
-    {
-        Vector3 padPosition = _pad.transform.position;
-        Vector3 currentPosition = transform.position;
-        currentPosition.x = padPosition.x;
-        transform.position = currentPosition;
-    }
-
-    public void ChangeSpeed(float _speedMultiplier)
+    public void ChangeSpeed(float speedMultiplier)
     {
         float velocityMagnitude = _rb.velocity.magnitude;
-        velocityMagnitude *= _speedMultiplier;
+        velocityMagnitude *= speedMultiplier;
 
         if (velocityMagnitude < _minSpeed)
             velocityMagnitude = _minSpeed;
@@ -81,11 +73,24 @@ public class Ball : MonoBehaviour
 
     #region Private methods
 
+    private void StartMove()
+    {
+        _rb.velocity = _startDirection;
+    }
+
     private void StartBall()
     {
         Debug.Log("Start Ball");
         _isStarted = true;
         StartMove();
+    }
+
+    private void MoveWithPad()
+    {
+        Vector3 padPosition = _pad.transform.position;
+        Vector3 currentPosition = transform.position;
+        currentPosition.x = padPosition.x;
+        transform.position = currentPosition;
     }
 
     #endregion
